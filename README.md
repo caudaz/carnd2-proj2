@@ -51,7 +51,7 @@ formulas are shown below:
 
 The CTRV model used consists of 5 variables: Px, Py, V, yaw, yaw\_rate:
 
-![](./media/image7.png){width="4.76in" height="2.403834208223972in"}
+![](./media/image7.png)
 
 Since the state is assumed to follow a Gaussian normal distribution and
 getting a measurement from RADAR and converting it thru the process
@@ -61,8 +61,7 @@ the state and those sigma points can then be passed thru the process
 function. This creates “predicted” sigma points. Those “predicted” sigma
 points can then be used in the updated step also (for RADAR only).
 
-![](./media/image8.png){width="4.694082458442694in"
-height="2.7466207349081366in"}
+![](./media/image8.png)
 
 The state vector is “augmented” by the noise covariance matrix values
 also.
@@ -71,8 +70,7 @@ also.
 
 The project code follows the flowchart shown in UDACITY’s website:
 
-![](./media/image9.png){width="3.31200021872266in"
-height="2.2446467629046367in"}
+![](./media/image9.png)
 
 The above flowchart is put into C++ code in the UKF.cpp file. It
 contains the following functions:
@@ -110,8 +108,7 @@ The tools.cpp: defines the Root Mean Squared (RMSE) function
 
 Both RADAR and LASER covariance values are given:
 
-![](./media/image10.png){width="3.2640004374453193in"
-height="1.7697090988626423in"}
+![](./media/image10.png)
 
 These values come from the equipment manufacturer. They are not
 cross-correlated (i.e. the values form a diagonal matrix):
@@ -200,7 +197,7 @@ The image below shows how the state and covariance values changed from
 “time zero” to halfway thru the simulation, until the end point for
 comparison:
 
-![](./media/image12.png){width="7.79in" height="1.95in"}
+![](./media/image12.png)
 
 It can be seen that the assumed initial identity covariance matrix
 changes into a symmetric matrix that has the highest values on the
@@ -222,16 +219,14 @@ overestimating the uncertainty of the system. The figure below shows an
 example of a case where the uncertainty of the system is being
 underestimated.
 
-![](./media/image14.png){width="3.3356561679790024in"
-height="1.8720002187226596in"}
+![](./media/image14.png)
 
 The model was run twice changing the process noise parameters: once with
 std\_a=30m/s and std\_yawdd=30rad/s2 (shown below in BLUE) and with the
 chosen values of std\_a=1m/s2 and std\_yawdd=0.15rad/s2 (shown below in
 ORANGE)
 
-![](./media/image15.png){width="6.637694663167104in"
-height="3.1131463254593177in"}
+![](./media/image15.png)
 
 Decreasing the process noise parameters, resulted in higher NIS values,
 but still below the chi-squared 5% max line. The RMSE results were
@@ -239,8 +234,8 @@ significantly lower, thus producing good RMSE for dataset1 and dataset2.
 
 The RMSE values for the Dataset 1 are shown below:
 
-![](./media/image16.png){width="6.52in" height="3.85in"}
+![](./media/image16.png)
 
 The RMSE values for the Dataset 2 are shown below:
 
-![](./media/image17.png){width="6.59in" height="3.68in"}
+![](./media/image17.png)
