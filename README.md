@@ -2,8 +2,7 @@
 
 **Term2 – Project2: Unscented Kalman Filter (UKF)**
 
-![](./media/image1.jpeg){width="4.511805555555555in"
-height="3.079861111111111in"}
+![](./media/image1.jpeg)
 
 **INTRODUCTION**
 
@@ -232,9 +231,11 @@ Decreasing the process noise parameters, resulted in higher NIS values,
 but still below the chi-squared 5% max line. The RMSE results were
 significantly lower, thus producing good RMSE for dataset1 and dataset2.
 
+
 The RMSE values for the Dataset 1 are shown below:
 
 ![](./media/image16.png)
+
 
 The RMSE values for the Dataset 2 are shown below:
 
