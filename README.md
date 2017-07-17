@@ -1,8 +1,11 @@
 **Self-Driving Car Engineer Nanodegree**
 
+
 **Term2 – Project2: Unscented Kalman Filter (UKF)**
 
+
 ![](./media/image1.jpeg)
+
 
 **INTRODUCTION**
 
@@ -11,6 +14,7 @@ bicycle using 2 given measurements: LIDAR and RADAR. These 2
 measurements can be read at any point in time. The estimate will be
 computed using an Unscented Kalman Filter (UKF). The UKF will follow a
 constant speed, constant yaw rate motion model (CTRV).
+
 
 **BASIC KF FILTERS IN 1D**
 
@@ -37,6 +41,7 @@ location is shown in **RED**. The formulas are:
 
 ![](./media/image5.jpeg)
 
+
 **KF IN 2D**
 
 KF can be extended to a 2D space (formulas are in document
@@ -45,6 +50,7 @@ as position Px, Py and velocities Vx, Vy. The prediction and update step
 formulas are shown below:
 
 ![](./media/image6.jpeg)
+
 
 **WHY UNSCENTED KF?**
 
@@ -64,6 +70,7 @@ points can then be used in the updated step also (for RADAR only).
 
 The state vector is “augmented” by the noise covariance matrix values
 also.
+
 
 **CODE FLOWCHART**
 
@@ -103,6 +110,7 @@ UKF::UpdateRadar
 
 The tools.cpp: defines the Root Mean Squared (RMSE) function
 
+
 **INSTRUMENTATION COVARIANCE MATRICES**
 
 Both RADAR and LASER covariance values are given:
@@ -122,6 +130,7 @@ R\_radar\_ &lt;&lt; 0.30, 0.00, 0.00,
 
 0.00, 0.00, 0.30;
 
+
 **PROCESS COVARIANCE MATRIX**
 
 The std\_a\^2 and std\_yawdd\^2 values in the process covariance matrix
@@ -132,6 +141,7 @@ were estimated as follows:
 
 -maximum yaw rate accel 45deg/s in 2.6s =&gt; 0.30rad/s2. Using ½ of
 this quantity yields ***0.15rad/s2*** for sigma\_yawdd
+
 
 **INITIALIZATION OF STATE X AND MATRICES**
 
@@ -160,6 +170,7 @@ P= 1 0 0 0 0
 0 0 0 1 0
 
 0 0 0 0 1
+
 
 **NUMERICAL CONSIDERATIONS**
 
@@ -190,6 +201,7 @@ to be checked to ensure numerical accuracy of the code:
         by cos(angle). This is accomplished by coding: angle\_diff
         = atan2(sin(angle\_diff) / cos(angle\_diff))
 
+
 **RESULTS FOR STATE AND COVARIANCE AT DIFFERENT TIMEPOINTS**
 
 The image below shows how the state and covariance values changed from
@@ -202,6 +214,7 @@ It can be seen that the assumed initial identity covariance matrix
 changes into a symmetric matrix that has the highest values on the
 diagonal terms.
 
+
 **ACCURACY OF COMPUTATIONS**
 
 The accuracy of the KF computations is calculated using a Root Mean
@@ -209,6 +222,7 @@ Squared (RMS) formula with respect to the ground truth of the moving
 vehicle:
 
 ![](./media/image13.jpeg)
+
 
 **Normalized Innovation Squared(NIS)**
 
