@@ -1,13 +1,13 @@
-**Self-Driving Car Engineer Nanodegree**
+# **Self-Driving Car Engineer Nanodegree** #
 
 
-**Term2 – Project2: Unscented Kalman Filter (UKF)**
+# **Term2 – Project2: Unscented Kalman Filter (UKF)** #
 
 
 ![](./media/image1.jpeg)
 
 
-**INTRODUCTION**
+## **INTRODUCTION** ##
 
 The purpose of the project is to estimate the location of a moving
 bicycle using 2 given measurements: LIDAR and RADAR. These 2
@@ -16,7 +16,7 @@ computed using an Unscented Kalman Filter (UKF). The UKF will follow a
 constant speed, constant yaw rate motion model (CTRV).
 
 
-**BASIC KF FILTERS IN 1D**
+## **BASIC KF FILTERS IN 1D** ##
 
 1.  KF can be used to “fuse” 2 measurements using the measurement values
     and uncertainties (on this case the covariance of the standard
@@ -42,7 +42,7 @@ location is shown in **RED**. The formulas are:
 ![](./media/image5.jpeg)
 
 
-**KF IN 2D**
+## **KF IN 2D** ##
 
 KF can be extended to a 2D space (formulas are in document
 sensor-fusion-ekf-reference.pdf), in which the state vector is defined
@@ -52,7 +52,7 @@ formulas are shown below:
 ![](./media/image6.jpeg)
 
 
-**WHY UNSCENTED KF?**
+## **WHY UNSCENTED KF?** ##
 
 The CTRV model used consists of 5 variables: Px, Py, V, yaw, yaw\_rate:
 
@@ -72,7 +72,7 @@ The state vector is “augmented” by the noise covariance matrix values
 also.
 
 
-**CODE FLOWCHART**
+## **CODE FLOWCHART** ##
 
 The project code follows the flowchart shown in UDACITY’s website:
 
@@ -111,7 +111,7 @@ UKF::UpdateRadar
 The tools.cpp: defines the Root Mean Squared (RMSE) function
 
 
-**INSTRUMENTATION COVARIANCE MATRICES**
+## **INSTRUMENTATION COVARIANCE MATRICES** ##
 
 Both RADAR and LASER covariance values are given:
 
@@ -131,7 +131,7 @@ R\_radar\_ &lt;&lt; 0.30, 0.00, 0.00,
 0.00, 0.00, 0.30;
 
 
-**PROCESS COVARIANCE MATRIX**
+## **PROCESS COVARIANCE MATRIX** ##
 
 The std\_a\^2 and std\_yawdd\^2 values in the process covariance matrix
 were estimated as follows:
@@ -143,7 +143,7 @@ were estimated as follows:
 this quantity yields ***0.15rad/s2*** for sigma\_yawdd
 
 
-**INITIALIZATION OF STATE X AND MATRICES**
+## **INITIALIZATION OF STATE X AND MATRICES** ##
 
 -The first recived measurement defines the state x. If it comes from
 LIDAR, Px and Py are used. If it comes from RADAR, rho, phi, and rhodot
@@ -172,7 +172,7 @@ P= 1 0 0 0 0
 0 0 0 0 1
 
 
-**NUMERICAL CONSIDERATIONS**
+## **NUMERICAL CONSIDERATIONS** ##
 
 The kalman\_filter.cpp file contains the Extended KF routine. It
 converts the current state to polar coordinates so that they can be
@@ -202,7 +202,7 @@ to be checked to ensure numerical accuracy of the code:
         = atan2(sin(angle\_diff) / cos(angle\_diff))
 
 
-**RESULTS FOR STATE AND COVARIANCE AT DIFFERENT TIMEPOINTS**
+## **RESULTS FOR STATE AND COVARIANCE AT DIFFERENT TIMEPOINTS** ##
 
 The image below shows how the state and covariance values changed from
 “time zero” to halfway thru the simulation, until the end point for
@@ -215,7 +215,7 @@ changes into a symmetric matrix that has the highest values on the
 diagonal terms.
 
 
-**ACCURACY OF COMPUTATIONS**
+## **ACCURACY OF COMPUTATIONS** ##
 
 The accuracy of the KF computations is calculated using a Root Mean
 Squared (RMS) formula with respect to the ground truth of the moving
@@ -224,7 +224,7 @@ vehicle:
 ![](./media/image13.jpeg)
 
 
-**Normalized Innovation Squared(NIS)**
+## **Normalized Innovation Squared(NIS)** ##
 
 Is a check for consistency of the prediction against a chi-squared
 distribution. It gives you an indication of underestimating or
